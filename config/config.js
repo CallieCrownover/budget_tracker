@@ -4,7 +4,7 @@ module.exports =
   "development": {
     "username": "root",
     "password": process.env.db_password,
-    "database": "budgetTracker_db",
+    "database": "budgettracker_db",
     "host": "localhost",
     "dialect": "mysql"
   },
