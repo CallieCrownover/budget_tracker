@@ -3,7 +3,7 @@ module.exports =
 {
   "development": {
     "username": "root",
-    "password": process.env.db_password,
+    "password": "1Ye!lding2",
     "database": "budgettracker_db",
     "host": "localhost",
     "dialect": "mysql"

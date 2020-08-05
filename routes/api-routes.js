@@ -50,4 +50,118 @@ module.exports = function(app) {
       });
     }
   });
+
+// BILL Functionality
+
+// Route for getting data for bills
+app.get("/api/overview", function(req, res) {
+  // findAll returns all entries for a table when used with no options
+  db.Bill.findAll({where: {userID: req.user.id},}).then(function(dbBill) {
+    // We have access to the Bills as an argument inside of the callback function
+    res.render(dbBill);
+  });
+});
+
+// Route for deleting Bill pnce paid
+app.delete("/api/overview/deletebill/:id", function(req, res) {
+  // We just have to specify which todo we want to destroy with "where"
+  db.Bill.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => {
+    res.redirect(307, "/api/overview");
+  })
+  .catch(err => {
+    res.status(401).json(err);
+  });
+
+});
+
+  // POST route for saving a new Bill
+  app.post("/api/overview/postbill", function(req, res) {
+    // create takes an argument of an object describing the Bill we want to
+    // insert into our table. 
+    db.Bill.create({
+      billName: req.body.name,
+      website: req.body.website,
+      dueDate: req.body.dueDate,
+      userId: req.params.id
+    })
+    .then(() => {
+      res.redirect(307, "/api/overview");
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
+  // Category Functionality
+
+// Route for getting data for Category for the Expense submit function
+app.get("/api/submit", function(req, res) {
+  // findAll returns all entries for a table when used with no options
+  db.Categorie.findAll({where: {userID: req.user.id},}).then(function(dbCategory) {
+    // We have access to the Category as an argument inside of the callback function
+    res.render(dbCategory);
+  });
+});
+
+  // POST route for saving a new category
+  app.post("/api/submit/postcategory", function(req, res) {
+    // create takes an argument of an object describing the category we want to
+    // insert into our table. 
+    db.Categorie.create({
+      categoryName: req.body.name,
+      categoryType: req.body.type,
+      userId: req.params.id
+    })
+    .then(() => {
+      res.redirect(307, "/api/submit");
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
+  // Expense Functionality
+
+  // POST route for saving a new expense
+  app.post("/api/submit/postexpense", function(req, res) {
+    // create takes an argument of an object describing the category we want to
+    // insert into our table. 
+    db.Expense.create({
+      expenseName: req.body.name,
+      amount: req.body.amount,
+      // categoryId: req.body.amount,
+      date: req.body.date,
+      userId: req.params.id
+    })
+    .then(() => {
+      res.redirect(307, "/api/submit");
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
+  
+  // Route for deleting Expense
+app.delete("/api/overview/deleteexpense/:id", function(req, res) {
+  // We just have to specify which todo we want to destroy with "where"
+  db.Expense.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => {
+    res.redirect(307, "/api/overview");
+  })
+  .catch(err => {
+    res.status(401).json(err);
+  });
+});
+
+
 };
