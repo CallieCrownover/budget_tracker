@@ -36,7 +36,11 @@ module.exports = function(app) {
     // If the user already has an account send them to the overview page
     if (!req.user) {
       res.redirect(307, "/login");
+
+    
     }
+
+
     db.Bill.findAll({where: {userID: req.user.id},}).then(function(dbBill) {
       // We have access to the Bills as an argument inside of the callback function
       let hbsOb = {bills: dbBill.map(bill => {return {id: bill.id, billName: bill.billName, website: bill.website, dueDate: bill.dueDate}})}
@@ -46,7 +50,7 @@ module.exports = function(app) {
     
     db.Expense.findAll({where: {userID: req.user.id},}).then(function(dbExpense) {
       // We have access to the Bills as an argument inside of the callback function
-      let hbsExp = {expenses: dbExpense.map(expense => {return {id: expense.id, expenseName: expense.expenseName, amount: expense.amount, date: expense.date, category: expense.CategorieId}})}
+      let hbsExp = {expenses: dbExpense.map(expense => {return {id: expense.id, expenseName: expense.expenseName, amount: expense.amount, date: expense.date, Category: expense.CategorieId}})}
       // res.render("overview", hbsExp);
       // console.log(hbsExpense)
     });
@@ -56,6 +60,14 @@ module.exports = function(app) {
       let hbsCat = {category: dbCategory.map(categorie => {return {id: categorie.id, categoryName: categorie.categoryName}})}
       // res.render("overview",hbsCat);  
       console.log(hbsCat)
+    });
+
+
+    db.Bill.findAll({where: {userID: req.user.id},}).then(function(dbBill) {
+      // We have access to the Bills as an argument inside of the callback function
+      let hbsOb = {bills: dbBill.map(bill => {return {id: bill.id, billName: bill.billName, website: bill.website, dueDate: bill.dueDate}})}
+      res.render("overview", hbsOb);
+     
     });
     
 

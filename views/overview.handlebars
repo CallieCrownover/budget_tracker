@@ -16,7 +16,7 @@
       <a class="nav-item nav-link" href="overview">Overview of Expenses</a>
     </a>
     <form class="form-inline">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><svg width="1em" height="1em"
           viewBox="0 0 16 16" class="bi bi-search btn-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
@@ -29,65 +29,97 @@
 
 
 
-  <div class="jumbotron-fluid jumbotronOverview">
+  <div class="jumbotron jumbotron-fluid jumbotronOverview">
 
 
 
       <div class="row">
         <div class="col">
-          <p class="logo"> <img src="../assets/css/images/budget_tracker_logo.svg" width="300" alt="budget tracker logo"
+          <p class="logo"> <img src="../assets/css/images/budget_tracker_logo.svg" width="300" alt="budget tracker logo">
               </p>
-              <div class = "togetherOverview">
-                        <h4 style="font-size: 30px"> <strong> It’s all coming together </strong></h4>
-        When you’re on top of your money, life is good. <br>
-        We help you effortlessly manage your finances <br> in one place.
-          </p>
-          </div>
+              <div class = "together">
+                  <h4 style="font-size: 30px"> <strong> It’s all coming together </strong></h4>
+                  <p>
+                  When you’re on top of your money, life is good. <br>
+                  We help you effortlessly manage your finances <br> in one place.
+                  </p>
+              </div>
         </div>
 
         <div class="col">
           <p class="lead"> <img src="../assets/css/images/Ipad Pro2_mockup.png" width="600" alt="budget tracker logo"> </p>
-        </div>
+      </div>
 
     </div>
+</div>
+  
 
 
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-5">
+    <div class="panel panel-default col-md-5" style="padding: 0px">
+    <div class="panel-heading">
+      <h3>Bills</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        {{#each bills}}
+          
+          <p>:Bill Name {{billName}}</p>
+              <p>Amount: {{website}}</p>
+              <p>Date: {{dueDate}}</p>
+            <li>
+              {{this.id}}<span>.</span> {{this.billName}}
 
 
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devour" value="true">
+                <button type="submit" class="btn btn-warning btn-sm">Devour!</button>
+              </form>
+            </li>
 
+         
+        {{/each}}
+      </ul>
+    </div>
   </div>
 
-<h2>HELLO</h2>
-
-  <div id="bills-output">
-    <ul>
-      {{#each bills}}
-        <li>
-          <p>Bill Name: {{billName}}</p>
-          <p>Website: {{website}}</p>
-          <p>Date: {{dueDate}}</p>
-          <button class="delete-bill" data-id= "{{id}}">Delete</button>
-        </li>
-      {{/each}}
-    </ul>
-    
-    
-  </div>
-
-
-  <!-- <div id="pie-chart" class="pie">Pie Chart</div> -->
-  {{!-- <div id="expenses-chart">Expenses Chart</div>
-  <div id="pie-chart" class="pie">Pie Chart</div> --}}
-
-  <div id="expense-output">
-    <ul>
-      {{#each expenses}}
-        <li>
+  <div class = "row">
+<div class = "col-md-5">
+  <div class="panel panel-default col-md-5" style="padding: 0px">
+    <div class="panel-heading">
+      <h3>Expenses</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        {{#each expenses}}
+         
           <p>expenseName: {{expenseName}}</p>
-          <p>amount: {{amount}}</p>
-          <p>Date: {{date}}</p>
-          <p>category: {{category}}</p>
-        </li>
-      {{/each}}
-    </ul>
+              <p>amount: {{amount}}</p>
+              <p>Date: {{date}}</p>
+              <p>category: {{CategoryType}}</p>
+            <li>
+              {{this.id}}<span>.</span> {{this.expenseName}}
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devour" value="false">
+                <button type="submit" class="btn btn-warning btn-sm">Delete!</button>
+              </form>
+            </li>
+        
+        {{/each}}
+      </ul>
+</div>
+    </div>
   </div>
+  </div>
+    
+  </div>
+  </div>
+</div>
+
+
+
+  
+
+  <div id="donutchart" style="width: 900px; height: 500px;"></div>
