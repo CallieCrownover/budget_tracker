@@ -31,47 +31,37 @@
 
     <table class="center" style="width:45%">
       <tr>
-        <th>
+        <td>
          Let's get started! <br>
           *placeholder*
-        </th>
+        </td>
         <td>
-          <form id="addExpense" class="expenseInfo">
-            <div>Add Expense</div>
-            {{!-- <div class="input-group mb-3">
+
+          <form id="addCategory" class="categoryInfo">
+            <div>Add Category</div>
+            <div class="input-group mb-3">
               <div class="input-group-prepend">
-              </div> --}}
+              </div>
+              <input id="categoryInputName" type="text" class="form-control" placeholder="Category"
+                aria-label="Category" aria-describedby="basic-addon1">
 
-            <label class="sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select class="custom-select" id="expenseInputCategory">
-              {{#each category}}
-              <option value={{id}}>{{categoryName}}</option>
-              {{/each}}
-            </select>
+              {{!-- <div  class="input-group mb-3"> --}}
 
-            <div id="exp-input" class="input-group mb-3">
-              <input id="expenseInputName" type="text" class="form-control" placeholder="Expense Name"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <label class="sr-only" for="inlineFormCustomSelect">Preference</label>
+              <select class="custom-select" id="categoryInputType">
+                <option value="Budget">Budget</option>
+                <option value="Cash">Cash</option>
+                <option value="Savings">Savings</option>
+                <option value="Expenses">Expenses</option>
+              </select>
             </div>
 
-            <div id="exp-input">
-              {{!-- class="input-group mb-3"> --}}
-              <input id="expenseInputAmount" type="text" class="form-control" placeholder="0.00"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
-            </div>
-
-            <div id="exp-input">
-              {{!-- class="input-group mb-3"> --}}
-              <input id="expenseInputDate" type="text" class="form-control" placeholder="Due Date"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
-            </div>
-
-            <button class="btn btn-primary" type="submit">Add</button>
+            <button id="btn-add-bill" class="btn btn-primary" type="submit">Add</button>
           </form>
         </td>
       </tr>
 
-
+      
       <tr>
         <td>
           <form id="addBill" class="billInfo">
@@ -100,42 +90,51 @@
             <button id="btn-add-bill" class="btn btn-primary" type="submit">Add</button>
           </form>
         </td>
-        <th>
+        <td>
           Let's get started! <br>
           *placeholder*
           
-        </th>
+        </td>
       </tr>
 
 
       <tr>
-        <th>
+        <td>
          Let's get started! <br>
           *placeholder*
-        </th>
+        </td>
         <td>
-          <form id="addCategory" class="categoryInfo">
-            <div>Add Category</div>
-            <div class="input-group mb-3">
+<form id="addExpense" class="expenseInfo">
+            <div>Add Expense</div>
+            {{!-- <div class="input-group mb-3">
               <div class="input-group-prepend">
-              </div>
-              <input id="categoryInputName" type="text" class="form-control" placeholder="Category"
-                aria-label="Category" aria-describedby="basic-addon1">
+              </div> --}}
 
-              {{!-- <div  class="input-group mb-3"> --}}
+            <label class="sr-only" for="inlineFormCustomSelect">Preference</label>
+            <select class="custom-select" id="expenseInputCategory">
+              {{#each category}}
+              <option value={{id}}>{{categoryName}}</option>
+              {{/each}}
+            </select>
 
-              <label class="sr-only" for="inlineFormCustomSelect">Preference</label>
-              <select class="custom-select" id="categoryInputType">
-                <option value="Budget">Budget</option>
-                <option value="Cash">Cash</option>
-                <option value="Savings">Savings</option>
-                <option value="Expenses">Expenses</option>
-              </select>
+            <div id="exp-input" class="input-group mb-3">
+              <input id="expenseInputName" type="text" class="form-control" placeholder="Expense Name"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
             </div>
 
+            <div id="exp-input">
+              {{!-- class="input-group mb-3"> --}}
+              <input id="expenseInputAmount" type="text" class="form-control" placeholder="0.00"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
 
-
-            <button id="btn-add-bill" class="btn btn-primary" type="submit">Add</button>
+            <div id="exp-input">
+              {{!-- class="input-group mb-3"> --}}
+              <input id="expenseInputDate" type="text" class="form-control" placeholder="Due Date"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+</br>
+            <button class="btn btn-primary" type="submit">Add</button>
           </form>
         </td>
       </tr>

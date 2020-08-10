@@ -32,22 +32,8 @@
   <div class="jumbotron-fluid jumbotronOverview">
 
 
+{{!GAINES AND TOM.. ENTER PIE CHARTS INTO THIS JUMBOTRON}}
 
-      <div class="row">
-        <div class="col">
-          <p class="logo"> <img src="../assets/css/images/budget_tracker_logo.svg" width="300" alt="budget tracker logo"
-              </p>
-              <div class = "togetherOverview">
-                        <h4 style="font-size: 30px"> <strong> It’s all coming together </strong></h4>
-        When you’re on top of your money, life is good. <br>
-        We help you effortlessly manage your finances <br> in one place.
-          </p>
-          </div>
-        </div>
-
-        <div class="col">
-          <p class="lead"> <img src="../assets/css/images/Ipad Pro2_mockup.png" width="600" alt="budget tracker logo"> </p>
-        </div>
 
     </div>
 
@@ -55,9 +41,20 @@
 
 
 
+<table style="width:100%">
+  <tr>
+    <td>
+      <div class="card" style="width: 18rem;">
+  <div class="card-body" id = "bills-output">
+    <h5 class="card-title"> {{#each categories }} </h5>
+    <h6 class="card-subtitle mb-2 text-muted">Bill Name: {{billName}} </h6>
+    <p class="card-text">Due Date: {{dueDate}} </p>
+    <a href="#" class="card-link"> Pay Bill {{website}} </a>
+    <a href="#" class="card-link">Another link</a>
+          {{/each}}
   </div>
+</div>
 
-<h2>HELLO</h2>
 
   <div id="bills-output">
     <ul>
@@ -70,16 +67,60 @@
         </li>
       {{/each}}
     </ul>
-    
-    
   </div>
+
+    </td>
+    {{!-- <td>
+            <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    </td>
+    <td>
+            <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+</table> --}}
+
+
+  </div>
+
+<h2>HELLO</h2>
+
+  {{!-- <div id="bills-output">
+    <ul>
+      {{#each bills}}
+        <li>
+          <p>Bill Name: {{billName}}</p>
+          <p>Website: {{website}}</p>
+          <p>Date: {{dueDate}}</p>
+          <button class="delete-bill" data-id= "{{id}}">Delete</button>
+        </li>
+      {{/each}}
+    </ul>
+  </div> --}}
 
 
   <!-- <div id="pie-chart" class="pie">Pie Chart</div> -->
   {{!-- <div id="expenses-chart">Expenses Chart</div>
   <div id="pie-chart" class="pie">Pie Chart</div> --}}
 
-  <div id="expense-output">
+  {{!-- <div id="expense-output">
     <ul>
       {{#each expenses}}
         <li>
@@ -90,4 +131,4 @@
         </li>
       {{/each}}
     </ul>
-  </div>
+  </div> --}}
