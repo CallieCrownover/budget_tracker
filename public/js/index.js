@@ -1,3 +1,6 @@
+  
+
+  
   $(document).ready(function() {
 
   const addBillForm = $("form.billInfo");
@@ -138,7 +141,7 @@
     var id = $(this).data("id");
     console.log(id)
     // Send the DELETE request.
-    $.ajax("views/bills/deletebill/" + id, {
+    $.ajax("api/bills/deletebill/" + id, {
       type: "DELETE"
       
     })

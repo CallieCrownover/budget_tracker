@@ -1,3 +1,34 @@
+
+
+<script>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    console.log("Check")
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    {{#each expenses}}
+        {{#if exp}}
+    [`{{categoryName}}`,{{amount}}],
+    
+    {{/if}}
+       {{/each}}
+  ]);
+
+  var options = {
+    title: 'My Daily Activities'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
+
+</script>
+
+
+
 <div class="container containerPage">
 
   <header id="header" class="header-1">
@@ -134,4 +165,7 @@
        {{/each}}
     </ul>
   </div>
+
+<div id="piechart" style="width: 900px; height: 500px;"></div>
+
 </div>
